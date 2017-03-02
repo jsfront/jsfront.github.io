@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="前端联盟群 - 492107297">
 <meta property="og:description" content="前言原文地址&amp;amp;&amp;amp;我的博客知乎&amp;amp;&amp;amp;知乎专栏作者：JayZangwill
 时间不知不觉已经来到了大三的下学期，各大企业的春招也陆续的开始，自己也开始做些面试题，一来了解了解面试题一般会问什么，二来通过面试题可以发现自己还有哪方面不足赶紧弥补，以备战今年的春招。通过最近的学习，我总结了一下一些我遇到的让我印象深刻的一些面试题，大家可以先看看题目自己想想答案，然后再看我的答">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-c7a0a02ca2361dc69d3005b4d498c095_b.png">
-<meta property="og:updated_time" content="2017-03-02T12:35:44.519Z">
+<meta property="og:image" content="https://jayzangwill.github.io/blog/img/face/padding-top.png">
+<meta property="og:updated_time" content="2017-03-02T12:53:44.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几个让我印象深刻的面试题(一)">
 <meta name="twitter:description" content="前言原文地址&amp;amp;&amp;amp;我的博客知乎&amp;amp;&amp;amp;知乎专栏作者：JayZangwill
 时间不知不觉已经来到了大三的下学期，各大企业的春招也陆续的开始，自己也开始做些面试题，一来了解了解面试题一般会问什么，二来通过面试题可以发现自己还有哪方面不足赶紧弥补，以备战今年的春招。通过最近的学习，我总结了一下一些我遇到的让我印象深刻的一些面试题，大家可以先看看题目自己想想答案，然后再看我的答">
-<meta name="twitter:image" content="https://pic2.zhimg.com/v2-c7a0a02ca2361dc69d3005b4d498c095_b.png">
+<meta name="twitter:image" content="https://jayzangwill.github.io/blog/img/face/padding-top.png">
     
 
     
@@ -207,7 +207,7 @@ fn2();
 <li>使用原生JS实现：<code>(10).add(10).reduce(2).add(10) //28</code>，意思是10加上10减去2加上10等于28。</li>
 </ol>
 <p>你可以自己思考答案后在参考我给的参考答案。</p>
-<h2 id="答案揭晓"><a href="#答案揭晓" class="headerlink" title="答案揭晓"></a>答案揭晓</h2><h3 id="第一个问题"><a href="#第一个问题" class="headerlink" title="第一个问题"></a>第一个问题</h3><p>这题主要考察了对<strong>w3c</strong>标准的了解。如果你亲自去浏览器去试的话会发现这个<code>div</code>的高为：<code>316.8</code>(<strong>注意</strong>：不同分辨率的电脑测试会有不同的效果，这里以我的电脑1600x900为参考)，其实到这里这题已经是解开了，但是可能还有些同学没明白这个<code>316.8</code>是如何计算得来的。别急，请听我细细道来。<br><img src="https://pic2.zhimg.com/v2-c7a0a02ca2361dc69d3005b4d498c095_b.png" alt="div的高"><br>如果你搞不懂结果为何是这个的话可能会去查<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">w3school</a>，你可能会看到：<br><img src="https://pic4.zhimg.com/v2-63434b0308e19a765bdeb5294f67a8ef_b.png" alt="w3school上的介绍"><br>但是可以这么说上面的所说的是错的，或者说，表述不准确。<br>例如一下情况：</p>
+<h2 id="答案揭晓"><a href="#答案揭晓" class="headerlink" title="答案揭晓"></a>答案揭晓</h2><h3 id="第一个问题"><a href="#第一个问题" class="headerlink" title="第一个问题"></a>第一个问题</h3><p>这题主要考察了对<strong>w3c</strong>标准的了解。如果你亲自去浏览器去试的话会发现这个<code>div</code>的高为：<code>316.8</code>(<strong>注意</strong>：不同分辨率的电脑测试会有不同的效果，这里以我的电脑1600x900为参考)，其实到这里这题已经是解开了，但是可能还有些同学没明白这个<code>316.8</code>是如何计算得来的。别急，请听我细细道来。<br><img src="https://jayzangwill.github.io/blog/img/face/padding-top.png" alt="div的高"><br>如果你搞不懂结果为何是这个的话可能会去查<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">w3school</a>，你可能会看到：<br><img src="https://jayzangwill.github.io/blog/img/face/w3c.png" alt="w3school上的介绍"><br>但是可以这么说上面的所说的是错的，或者说，表述不准确。<br>例如一下情况：</p>
 <pre><code>//css
 .inner{
         position: absolute;
@@ -227,7 +227,7 @@ fn2();
         &lt;div class=&quot;inner&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-</code></pre><p><img src="https://pic2.zhimg.com/v2-0f054766a10473eaac19555fc83d9011_b.png" alt="加了定位后div的高"><br>如果按照<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">w3school</a>说的，这个<code>inner</code>的高应该是<code>40px</code>，但是实际不是，而是<code>60px</code>，是以<code>wrap</code>的宽度计算的，由此可见，w3school的说法不成立。<br>那么，当<code>padding</code>设置为<code>%</code>时到底以谁为参考呢？<br>事到如今我也不给大家卖关子了，其实是以<a href="http://www.ayqy.net/doc/css2-1/visudet.html#containing-block-details" target="_blank" rel="external">包含块</a>为参考的。通俗点来说就是谁包含它，它就以谁为参考，在这里<code>inner</code>设置了<code>position:absolute</code>脱离了原来的文档流，就会去寻找它的祖先元素设置了<code>position:relative</code>的元素作为它的包含块。如果还不懂包含块是啥的同学建议仔细阅读我刚刚给的链接，同时还可以参考我在<a href="https://segmentfault.com/q/1010000008362925" target="_blank" rel="external">segmentfault</a>上的这个问题。</p>
+</code></pre><p><img src="https://jayzangwill.github.io/blog/img/face/absolute-padding.png" alt="加了定位后div的高"><br>如果按照<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">w3school</a>说的，这个<code>inner</code>的高应该是<code>40px</code>，但是实际不是，而是<code>60px</code>，是以<code>wrap</code>的宽度计算的，由此可见，w3school的说法不成立。<br>那么，当<code>padding</code>设置为<code>%</code>时到底以谁为参考呢？<br>事到如今我也不给大家卖关子了，其实是以<a href="http://www.ayqy.net/doc/css2-1/visudet.html#containing-block-details" target="_blank" rel="external">包含块</a>为参考的。通俗点来说就是谁包含它，它就以谁为参考，在这里<code>inner</code>设置了<code>position:absolute</code>脱离了原来的文档流，就会去寻找它的祖先元素设置了<code>position:relative</code>的元素作为它的包含块。如果还不懂包含块是啥的同学建议仔细阅读我刚刚给的链接，同时还可以参考我在<a href="https://segmentfault.com/q/1010000008362925" target="_blank" rel="external">segmentfault</a>上的这个问题。</p>
 <h3 id="第二个问题"><a href="#第二个问题" class="headerlink" title="第二个问题"></a>第二个问题</h3><p>这题考察了对闭包和定时器另外还有js执行顺序的理解。<br>先来说说<code>fn1</code>，如果把<code>clearTimeout</code>去掉，相信大家一定很熟悉，都会说<code>10ms</code>延迟后会依次输出<code>0,1,2,3</code>。<br>但是，请注意这里加了个<code>clearTimeout</code>，如果你去控制台实验的话会发现只输出了<code>0,1,2</code>，那<code>3</code>呢？<br>先别急，请听我慢慢道来：<br><strong>请注意：</strong>这个<code>tc</code>是定义在闭包外面的，也就是说<code>tc</code>并没有被闭包保存，所以这里的<code>tc</code>指的是最后一个循环留下来的<code>tc</code>，所以最后一个<code>3</code>被清除了，没有输出。</p>
 <p>再来看看<code>fn2</code>，可以发现区别就是把<code>setTimeout</code>改为了<code>setInterval</code>,同时把定时器也传到了闭包里。<br>那么结果又会有什么不同呢？如果亲自去实验的同学就会发现输出<code>0,1,2,3,3,3...</code>。<br>什么鬼？为毛最后一个定时器没被删除。说实话，我在这里也想了很久，为何最后一个定时器没被删除。后来我为了调试方便把<code>i&lt;4</code>改为了<code>i&lt;2</code>并把触发时间改为3s，在浏览器中单步调试，发现3s后第一次触发回调函数执行的时候<code>tc</code>的值是<code>undefined</code>第二次触发的时候有值了。这个时候我顿悟，这和程序的执行顺序有关。我们知道js正常情况下是从上到下，从右到左执行的。<br>所以这里每次循环先设置定时器，然后把定时器的返回值赋值给<code>tc</code>。在第一次循环的时候<code>tc</code>并没有被赋值，所以是<code>undefined</code>，在第二次循环的时候，定时器其实清理的是上一个循环的定时器。所以导致每次循环都是清理上一次的定时器，而最后一次循环的定时器没被清理，导致一直输出<code>3</code>。</p>
 <h3 id="第三个问题"><a href="#第三个问题" class="headerlink" title="第三个问题"></a>第三个问题</h3><p>这题很明显，考察函数的柯里化，函数的柯里化还不懂是啥的童鞋可以看<a href="http://www.zhangxinxu.com/wordpress/2013/02/js-currying/" target="_blank" rel="external">这里</a>。<br>这题我的解题思路可能会有点愚笨，不过为了抛砖引玉，还是硬着头皮把我的方法写上来吧，欢迎大家在下面评论给意见。<br>按照题目的要求需要把<code>fn</code>作为第一个参数传进去，而且给出结果刚好是<code>fn</code>运算后给出的结果。<br>所以我的思路是要有一个函数将<code>fn</code>函数所需参数全部集中到一个数组上，集中完毕后调用<code>fn</code>函数，我的代码如下：</p>
