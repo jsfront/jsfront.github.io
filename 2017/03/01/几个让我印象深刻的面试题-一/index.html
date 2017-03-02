@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>几个让我印象深刻的面试题(一) | 前端联盟群 - 492107297</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="面试,基础,javascript" />
+    
+    <meta name="description" content="前言原文地址&amp;amp;&amp;amp;我的博客知乎&amp;amp;&amp;amp;知乎专栏作者：JayZangwill
+时间不知不觉已经来到了大三的下学期，各大企业的春招也陆续的开始，自己也开始做些面试题，一来了解了解面试题一般会问什么，二来通过面试题可以发现自己还有哪方面不足赶紧弥补，以备战今年的春招。通过最近的学习，我总结了一下一些我遇到的让我印象深刻的一些面试题，大家可以先看看题目自己想想答案，然后再看我的答">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几个让我印象深刻的面试题(一)">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/几个让我印象深刻的面试题-一/index.html">
+<meta property="og:site_name" content="前端联盟群 - 492107297">
+<meta property="og:description" content="前言原文地址&amp;amp;&amp;amp;我的博客知乎&amp;amp;&amp;amp;知乎专栏作者：JayZangwill
+时间不知不觉已经来到了大三的下学期，各大企业的春招也陆续的开始，自己也开始做些面试题，一来了解了解面试题一般会问什么，二来通过面试题可以发现自己还有哪方面不足赶紧弥补，以备战今年的春招。通过最近的学习，我总结了一下一些我遇到的让我印象深刻的一些面试题，大家可以先看看题目自己想想答案，然后再看我的答">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-c7a0a02ca2361dc69d3005b4d498c095_b.png">
+<meta property="og:updated_time" content="2017-03-02T12:30:31.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几个让我印象深刻的面试题(一)">
+<meta name="twitter:description" content="前言原文地址&amp;amp;&amp;amp;我的博客知乎&amp;amp;&amp;amp;知乎专栏作者：JayZangwill
+时间不知不觉已经来到了大三的下学期，各大企业的春招也陆续的开始，自己也开始做些面试题，一来了解了解面试题一般会问什么，二来通过面试题可以发现自己还有哪方面不足赶紧弥补，以备战今年的春招。通过最近的学习，我总结了一下一些我遇到的让我印象深刻的一些面试题，大家可以先看看题目自己想想答案，然后再看我的答">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-c7a0a02ca2361dc69d3005b4d498c095_b.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <!--<a href="/" class="logo"></a>-->
+                        前端联盟群-492107297
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/公告/">公告</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/city/index.html">城市榜</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">英雄榜</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-几个让我印象深刻的面试题-一" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        几个让我印象深刻的面试题(一)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/03/01/几个让我印象深刻的面试题-一/" class="article-date">
+    <time datetime="2017-03-01T08:35:41.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://jayzangwill.github.io/blog/2017/03/01/%E5%87%A0%E4%B8%AA%E8%AE%A9%E6%88%91%E5%8D%B0%E8%B1%A1%E6%B7%B1%E5%88%BB%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98-%E4%B8%80/" target="_blank" rel="external">原文地址</a>&amp;&amp;<a href="https://jayzangwill.github.io/blog/" target="_blank" rel="external">我的博客</a><br><a href="https://zhuanlan.zhihu.com/p/25514220" target="_blank" rel="external">知乎</a>&amp;&amp;<a href="https://zhuanlan.zhihu.com/jayzangwill" target="_blank" rel="external">知乎专栏</a><br>作者：<a href="https://github.com/JayZangwill" target="_blank" rel="external">JayZangwill</a></p>
+<p>时间不知不觉已经来到了大三的下学期，各大企业的春招也陆续的开始，自己也开始做些面试题，一来了解了解面试题一般会问什么，二来通过面试题可以发现自己还有哪方面不足赶紧弥补，以备战今年的春招。<br>通过最近的学习，我总结了一下一些我遇到的让我印象深刻的一些面试题，大家可以先看看题目自己想想答案，然后再看我的答案(<strong>我的答案经供参考，如有更好的想法欢迎在下面评论区提出自己的意见</strong>)。</p>
+<a id="more"></a>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li>给一个div设置它的宽度为<code>100px</code>，然后再设置它的<code>padding-top</code>为<code>20%</code>。问：现在这个div有多高？</li>
+<li>如下代码：</li>
+</ol>
+<pre><code>function fn1(){
+    for(var i=0;i&lt;4;i++){
+        var tc=setTimeout(function(i){
+            console.log(i);
+            clearTimeout(tc)
+        },10,i);
+    }
+}
+function fn2(){
+    for(var i=0;i&lt;4;i++){
+        var tc=setInterval(function(i,tc){
+            console.log(i);
+            clearInterval(tc)
+        },10,i,tc);
+    }
+}
+fn1();
+fn2();
+</code></pre><p>请问分别会输出什么？</p>
+<ol>
+<li>如下代码：</li>
+</ol>
+<pre><code>var fn=function(a,b,c){
+    return a+b+c;
+}
+</code></pre><p>需要写一个函数，满足<code>curry(fn)(1)(2)(3) //6</code></p>
+<ol>
+<li>使用原生JS实现：<code>(10).add(10).reduce(2).add(10) //28</code>，意思是10加上10减去2加上10等于28。</li>
+</ol>
+<p>你可以自己思考答案后在参考我给的参考答案。</p>
+<h2 id="答案揭晓"><a href="#答案揭晓" class="headerlink" title="答案揭晓"></a>答案揭晓</h2><h3 id="第一个问题"><a href="#第一个问题" class="headerlink" title="第一个问题"></a>第一个问题</h3><p>这题主要考察了对<strong>w3c</strong>标准的了解。如果你亲自去浏览器去试的话会发现这个<code>div</code>的高为：<code>316.8</code>(<strong>注意</strong>：不同分辨率的电脑测试会有不同的效果，这里以我的电脑1600x900为参考)，其实到这里这题已经是解开了，但是可能还有些同学没明白这个<code>316.8</code>是如何计算得来的。别急，请听我细细道来。<br><img src="https://pic2.zhimg.com/v2-c7a0a02ca2361dc69d3005b4d498c095_b.png" alt="div的高"><br>如果你搞不懂结果为何是这个的话可能会去查<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">w3school</a>，你可能会看到：<br><img src="https://pic4.zhimg.com/v2-63434b0308e19a765bdeb5294f67a8ef_b.png" alt="w3school上的介绍"><br>但是可以这么说上面的所说的是错的，或者说，表述不准确。<br>例如一下情况：</p>
+<pre><code>//css
+.inner{
+        position: absolute;
+        width: 100px;
+        padding-top: 20%;
+}
+.mid{
+    width: 200px;
+}
+.wrap{
+    position: relative;
+    width: 300px;
+}
+//html
+&lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;mid&quot;&gt;
+        &lt;div class=&quot;inner&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p><img src="https://pic2.zhimg.com/v2-0f054766a10473eaac19555fc83d9011_b.png" alt="加了定位后div的高"><br>如果按照<a href="http://www.w3school.com.cn/cssref/pr_padding.asp" target="_blank" rel="external">w3school</a>说的，这个<code>inner</code>的高应该是<code>40px</code>，但是实际不是，而是<code>60px</code>，是以<code>wrap</code>的宽度计算的，由此可见，w3school的说法不成立。<br>那么，当<code>padding</code>设置为<code>%</code>时到底以谁为参考呢？<br>事到如今我也不给大家卖关子了，其实是以<a href="http://www.ayqy.net/doc/css2-1/visudet.html#containing-block-details" target="_blank" rel="external">包含块</a>为参考的。通俗点来说就是谁包含它，它就以谁为参考，在这里<code>inner</code>设置了<code>position:absolute</code>脱离了原来的文档流，就会去寻找它的祖先元素设置了<code>position:relative</code>的元素作为它的包含块。如果还不懂包含块是啥的同学建议仔细阅读我刚刚给的链接，同时还可以参考我在<a href="https://segmentfault.com/q/1010000008362925" target="_blank" rel="external">segmentfault</a>上的这个问题。</p>
+<h3 id="第二个问题"><a href="#第二个问题" class="headerlink" title="第二个问题"></a>第二个问题</h3><p>这题考察了对闭包和定时器另外还有js执行顺序的理解。<br>先来说说<code>fn1</code>，如果把<code>clearTimeout</code>去掉，相信大家一定很熟悉，都会说<code>10ms</code>延迟后会依次输出<code>0,1,2,3</code>。<br>但是，请注意这里加了个<code>clearTimeout</code>，如果你去控制台实验的话会发现只输出了<code>0,1,2</code>，那<code>3</code>呢？<br>先别急，请听我慢慢道来：<br><strong>请注意：</strong>这个<code>tc</code>是定义在闭包外面的，也就是说<code>tc</code>并没有被闭包保存，所以这里的<code>tc</code>指的是最后一个循环留下来的<code>tc</code>，所以最后一个<code>3</code>被清除了，没有输出。</p>
+<p>再来看看<code>fn2</code>，可以发现区别就是把<code>setTimeout</code>改为了<code>setInterval</code>,同时把定时器也传到了闭包里。<br>那么结果又会有什么不同呢？如果亲自去实验的同学就会发现输出<code>0,1,2,3,3,3...</code>。<br>什么鬼？为毛最后一个定时器没被删除。说实话，我在这里也想了很久，为何最后一个定时器没被删除。后来我为了调试方便把<code>i&lt;4</code>改为了<code>i&lt;2</code>并把触发时间改为3s，在浏览器中单步调试，发现3s后第一次触发回调函数执行的时候<code>tc</code>的值是<code>undefined</code>第二次触发的时候有值了。这个时候我顿悟，这和程序的执行顺序有关。我们知道js正常情况下是从上到下，从右到左执行的。<br>所以这里每次循环先设置定时器，然后把定时器的返回值赋值给<code>tc</code>。在第一次循环的时候<code>tc</code>并没有被赋值，所以是<code>undefined</code>，在第二次循环的时候，定时器其实清理的是上一个循环的定时器。所以导致每次循环都是清理上一次的定时器，而最后一次循环的定时器没被清理，导致一直输出<code>3</code>。</p>
+<h3 id="第三个问题"><a href="#第三个问题" class="headerlink" title="第三个问题"></a>第三个问题</h3><p>这题很明显，考察函数的柯里化，函数的柯里化还不懂是啥的童鞋可以看<a href="http://www.zhangxinxu.com/wordpress/2013/02/js-currying/" target="_blank" rel="external">这里</a>。<br>这题我的解题思路可能会有点愚笨，不过为了抛砖引玉，还是硬着头皮把我的方法写上来吧，欢迎大家在下面评论给意见。<br>按照题目的要求需要把<code>fn</code>作为第一个参数传进去，而且给出结果刚好是<code>fn</code>运算后给出的结果。<br>所以我的思路是要有一个函数将<code>fn</code>函数所需参数全部集中到一个数组上，集中完毕后调用<code>fn</code>函数，我的代码如下：</p>
+<pre><code>var fn = function(a,b,c) {
+    return a+b+c;
+}
+
+function curry(fn) {
+    var arr = [],
+    mySlice = arr.slice
+    fnLen = fn.length;
+
+    function curring() {
+        arr = arr.concat(mySlice.call(arguments));
+        if(arr.length &lt; fnLen) {
+            return curring;
+        }
+        return fn.apply(this, arr);
+    }
+    return curring
+}
+curry(fn)(1)(2)(3);//6
+</code></pre><h3 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h3><p>这题主要考察对函数原型的理解。<br>相信大多数同学看到题目可能会一脸懵逼。<code>(10)</code>是什么鬼？函数调用？如果是函数调用你的函数名咧？<br>但是如果你多看两眼<code>(10)</code>不就是普通的<code>10</code>嘛，就是这个<code>10</code>在调用它原型下的<code>add</code>函数，然后后面一串链式调用你懂的！<br>如果搞清楚这点的话这题就简单了，直接在<code>Number</code>的原型下加方法：</p>
+<pre><code>Number.prototype.add=function(num){
+    return this+num;
+}
+Number.prototype.reduce=function(num){
+    return this-num;
+}
+</code></pre><p>就是这么简单。</p>
+<h2 id="说在最后的话"><a href="#说在最后的话" class="headerlink" title="说在最后的话"></a>说在最后的话</h2><p>祝各位和我一样奋斗在春招一线的同学早日拿到心怡的offer，另外，我的博客还会持续更新关于面试题的一些技术文章，欢迎大家关注。<br><a href="http://www.jayzangwill.cn/resume.html" target="_blank" rel="external">我的简历</a>。</p>
+<p>来自河南前端群(240344448)投递，我联系方式：359390851@qq.com，我们的<a href="http://henanjs.org" target="_blank" rel="external">河南前端官网</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/q/1010000008362925" target="_blank" rel="external">一个面试题衍生出来的问题推荐答案</a><br><a href="http://www.zhangxinxu.com/wordpress/2013/02/js-currying/" target="_blank" rel="external">JS中的柯里化</a><br><a href="https://www.zhihu.com/question/54822257" target="_blank" rel="external">Web前端面试题，求解答</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/03/01/几个让我印象深刻的面试题-一/" data-title="几个让我印象深刻的面试题(一)" data-url="http://yoursite.com/2017/03/01/几个让我印象深刻的面试题-一/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jsfront" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jikey" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/02/16/welcome-2017/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">感谢2016一起走过，相约2017一起前行</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/03/01/几个让我印象深刻的面试题-一/" class="title">几个让我印象深刻的面试题(一)</a></p>
+                            <p class="item-date"><time datetime="2017-03-01T08:35:41.000Z" itemprop="datePublished">2017-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/公告/">公告</a></p>
+                            <p class="item-title"><a href="/2017/02/16/welcome-2017/" class="title">感谢2016一起走过，相约2017一起前行</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T14:29:14.436Z" itemprop="datePublished">2017-02-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/公告/">公告</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://jikey.cnblogs.com">豪情</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <!--<a href="/" class="logo"></a>-->
+                    前端联盟群-492107297
+                </h1>
+                <p>&copy; 2017 豪情</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'jsfront'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
