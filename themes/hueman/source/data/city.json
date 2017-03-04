@@ -91,6 +91,16 @@
   },
   {
     "id": "10",
+    "username": "hunanjs",
+    "name": "湖南",
+    "blog": "http://hunanjs.org",
+    "github": "https://github.com/hunanjs",
+    "website": "http://hunanjs.org",
+    "word": "长沙是一座给力的城市",
+    "avatar": "https://avatars3.githubusercontent.com/u/25519777?v=3&s=200"
+  },
+  {
+    "id": "11",
     "username": "chengdujs",
     "name": "成都",
     "blog": "http://chengdujs.com",
@@ -100,7 +110,7 @@
     "avatar": "https://avatars2.githubusercontent.com/u/20961892?v=3&s=200"
   },
   {
-    "id": "11",
+    "id": "12",
     "username": "shangdongjs",
     "name": "山东",
     "blog": "http://shangdongjs.org",
@@ -110,7 +120,7 @@
     "avatar": "https://avatars2.githubusercontent.com/u/25519846?v=3&s=200"
   },
   {
-    "id": "12",
+    "id": "13",
     "username": "wdshare-group",
     "name": "陕西",
     "blog": "http://wdshare.org",
@@ -120,7 +130,7 @@
     "avatar": "https://avatars1.githubusercontent.com/u/10227992?v=3&s=200"
   },
   {
-    "id": "13",
+    "id": "14",
     "username": "hebeijs",
     "name": "河北",
     "blog": "http://hebeijs.org",
@@ -130,7 +140,7 @@
     "avatar": "https://avatars2.githubusercontent.com/u/25519826?v=3&s=200"
   },
   {
-    "id": "14",
+    "id": "15",
     "username": "henanjs",
     "name": "河南",
     "blog": "http://henanjs.org ",
@@ -140,7 +150,7 @@
     "avatar": "https://avatars2.githubusercontent.com/u/25519768?v=3&s=200"
   },
   {
-    "id": "15",
+    "id": "16",
     "username": "anhuijs",
     "name": "安徽",
     "blog": "http://anhuijs.org/",
@@ -150,7 +160,7 @@
     "avatar": "https://avatars3.githubusercontent.com/u/25519886?v=3&s=200"
   },
   {
-    "id": "16",
+    "id": "17",
     "username": "chongqingjs",
     "name": "重庆",
     "blog": "http://chongqingjs.org/",
@@ -160,7 +170,7 @@
     "avatar": "https://avatars0.githubusercontent.com/u/25521060?v=3&s=200"
   },
   {
-    "id": "17",
+    "id": "18",
     "username": "heilongjiangjs",
     "name": "黑龙江",
     "blog": "http://hljjs.org",
@@ -170,7 +180,7 @@
     "avatar": "https://avatars3.githubusercontent.com/u/25521056?v=3&s=200"
   },
   {
-    "id": "18",
+    "id": "19",
     "username": "liaoningjs",
     "name": "辽宁",
     "blog": "http://liaoningjs.com",
@@ -180,7 +190,7 @@
     "avatar": "https://avatars0.githubusercontent.com/u/25521047?v=3&s=200"
   },
   {
-    "id": "19",
+    "id": "20",
     "username": "jilinjs",
     "name": "吉林",
     "blog": "http://jilinjs.com",
@@ -190,7 +200,7 @@
     "avatar": "https://avatars1.githubusercontent.com/u/25521052?v=3&s=200"
   },
   {
-    "id": "20",
+    "id": "21",
     "username": "shanxijs",
     "name": "山西",
     "blog": "http://shanxijs.org",
@@ -200,7 +210,7 @@
     "avatar": "https://avatars0.githubusercontent.com/u/25342406?v=3&s=200"
   },
   {
-    "id": "21",
+    "id": "22",
     "username": "fujianjs",
     "name": "福建",
     "blog": "http://fujianjs.com",
@@ -210,7 +220,7 @@
     "avatar": "https://avatars0.githubusercontent.com/u/25519897?v=3&s=200"
   },
   {
-    "id": "22",
+    "id": "23",
     "username": "gansujs",
     "name": "甘肃",
     "blog": "http://gansujs.org",
@@ -220,7 +230,7 @@
     "avatar": "https://avatars1.githubusercontent.com/u/25521069?v=3&s=200"
   },
   {
-    "id": "23",
+    "id": "24",
     "username": "xinjiangjs",
     "name": "新疆",
     "blog": "http://xinjiangjs.org",
@@ -230,7 +240,7 @@
     "avatar": "https://avatars3.githubusercontent.com/u/25521071?v=3&s=200"
   },
   {
-    "id": "24",
+    "id": "25",
     "username": "ningxiajs",
     "name": "宁夏",
     "blog": "http://ningxiajs.com",
@@ -240,7 +250,7 @@
     "avatar": "https://avatars1.githubusercontent.com/u/25521086?v=3&s=200"
   },
   {
-    "id": "25",
+    "id": "26",
     "username": "neimenggujs",
     "name": "内蒙",
     "blog": "http://neimengjs.org",
@@ -250,7 +260,7 @@
     "avatar": "https://avatars2.githubusercontent.com/u/25521064?v=3&s=200"
   },
   {
-    "id": "26",
+    "id": "27",
     "username": "guizhoujs",
     "name": "贵州",
     "blog": "http://guizhoujs.org",
@@ -260,7 +270,7 @@
     "avatar": "https://avatars3.githubusercontent.com/u/26017331?v=3&s=200"
   },
   {
-    "id": "27",
+    "id": "28",
     "username": "yunnanjs",
     "name": "云南",
     "blog": "http://yunnanjs.org",
@@ -270,7 +280,7 @@
     "avatar": "https://avatars1.githubusercontent.com/u/25521074?v=3&s=200"
   },
   {
-    "id": "28",
+    "id": "29",
     "username": "guangxijs",
     "name": "广西",
     "blog": "http://guangxijs.org",
