@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Vue插件介绍 | 前端联盟群 - 492107297</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="vue" />
+    
+    <meta name="description" content="Vue插件1、概述
+
+简单来说，插件就是指对Vue的功能的增强或补充。
+比如说，让你在每个单页面的组件里，都可以调用某个方法，或者共享使用某个变量，或者在某个方法之前执行一段代码等
+2、使用方法
+
+总体流程应该是：
+【声明插件】——【写插件】——【注册插件】——【使用插件】
+写插件和声明插件是同步的，然后注册到Vue对象中（不用担心重复注册），最后在写Vue组件的时候使用写的插件
+声明插件先写一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue插件介绍">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/vue-pulgin-intro/index.html">
+<meta property="og:site_name" content="前端联盟群 - 492107297">
+<meta property="og:description" content="Vue插件1、概述
+
+简单来说，插件就是指对Vue的功能的增强或补充。
+比如说，让你在每个单页面的组件里，都可以调用某个方法，或者共享使用某个变量，或者在某个方法之前执行一段代码等
+2、使用方法
+
+总体流程应该是：
+【声明插件】——【写插件】——【注册插件】——【使用插件】
+写插件和声明插件是同步的，然后注册到Vue对象中（不用担心重复注册），最后在写Vue组件的时候使用写的插件
+声明插件先写一个">
+<meta property="og:updated_time" content="2017-03-06T00:08:02.750Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue插件介绍">
+<meta name="twitter:description" content="Vue插件1、概述
+
+简单来说，插件就是指对Vue的功能的增强或补充。
+比如说，让你在每个单页面的组件里，都可以调用某个方法，或者共享使用某个变量，或者在某个方法之前执行一段代码等
+2、使用方法
+
+总体流程应该是：
+【声明插件】——【写插件】——【注册插件】——【使用插件】
+写插件和声明插件是同步的，然后注册到Vue对象中（不用担心重复注册），最后在写Vue组件的时候使用写的插件
+声明插件先写一个">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f9b24c0edfe66b3c0566368634f91fc";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <!--<a href="/" class="logo"></a>-->
+                        前端联盟群-492107297
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/公告/">公告</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/city/index.html">城市榜</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">英雄榜</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/文章/">文章</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-vue-pulgin-intro" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Vue插件介绍
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/03/06/vue-pulgin-intro/" class="article-date">
+    <time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Vue插件"><a href="#Vue插件" class="headerlink" title="Vue插件"></a>Vue插件</h2><h3 style="color:red">1、概述</h3>
+
+<p>简单来说，插件就是指对Vue的功能的增强或补充。</p>
+<p>比如说，让你在每个单页面的组件里，都可以调用某个方法，或者共享使用某个变量，或者在某个方法之前执行一段代码等</p>
+<h3 style="color:red">2、使用方法</h3>
+
+<p>总体流程应该是：</p>
+<p>【声明插件】——【写插件】——【注册插件】——【使用插件】</p>
+<p>写插件和声明插件是同步的，然后注册到Vue对象中（不用担心重复注册），最后在写Vue组件的时候使用写的插件</p>
+<h4 id="声明插件"><a href="#声明插件" class="headerlink" title="声明插件"></a><strong>声明插件</strong></h4><p>先写一个js文件，这个js文件就是插件文件，里面的基本内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*   说明：</div><div class="line"> *   插件文件：service.js</div><div class="line"> *   作者：王冬   QQ：20004604</div><div class="line"> * */</div><div class="line">export default &#123;</div><div class="line">    install: function (Vue, options) &#123;</div><div class="line">        // 添加的内容写在这个函数里面</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>其中install的第一个参数Vue表示的是Vue的实例，第二个参数表示的是一些设置选项。</p>
+<p>Vue实例好理解，就是Vue对象。</p>
+<p>而options设置选项就是指，在调用这个插件时，可以传一个对象。</p>
+<p>例如这个对象有一个属性float，然后在写插件的一个方法/变量时，我需要输出一个数字，然后写一个if判断语句，</p>
+<p>假如options.float为true时，输出浮点数；</p>
+<p>假如为false或undefined（即没传参）时，输出为整数。</p>
+<p>具体怎么添加，之后再说。</p>
+<h4 id="注册插件"><a href="#注册插件" class="headerlink" title="注册插件"></a><strong>注册插件</strong></h4><p>如果使用过Vue-router，就很好理解，通过import引入后，然后通过 <code>Vue.use(插件名)</code> 注册插件；</p>
+<p>例如，我们通常在main.js里引入各种东西，并且组件的根实例也在这里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line">import Vue from &apos;vue&apos;</div><div class="line">import App from &apos;./App.vue&apos;</div><div class="line"></div><div class="line">//关键是这两行</div><div class="line">import service from &apos;./service.js&apos;</div><div class="line">Vue.use(service)</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">    el: &apos;#app&apos;,</div><div class="line">    render: (h) =&gt; h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>如代码中注释所说，关键是通过import导入service文件，然后在创建根组件之前，让Vue对象通过use方法来注册插件service。</p>
+<p>通过这样简单的两步，就可以使用插件了。</p>
+<h3 style="color:red">3、写插件、使用插件</h3>
+
+<p>按照官方文档，写插件有四种方法，先给出官方的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//以下内容都是添加到上面install的函数里面的</div><div class="line"></div><div class="line">// 1. 添加全局方法或属性</div><div class="line">Vue.myGlobalMethod = function () &#123;</div><div class="line">    // 逻辑...</div><div class="line">&#125;</div><div class="line">// 2. 添加全局资源</div><div class="line">Vue.directive(&apos;my-directive&apos;, &#123;</div><div class="line">    bind (el, binding, vnode, oldVnode) &#123;</div><div class="line">        // 逻辑...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;)</div><div class="line">// 3. 注入组件</div><div class="line">Vue.mixin(&#123;</div><div class="line">    created: function () &#123;</div><div class="line">        // 逻辑...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;)</div><div class="line">// 4. 添加实例方法</div><div class="line">Vue.prototype.$myMethod = function (options) &#123;</div><div class="line">    // 逻辑...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>先给出最常用的：【4. 添加实例方法】的写法和使用方法</p>
+<h4 id="3-1【添加实例方法或属性】"><a href="#3-1【添加实例方法或属性】" class="headerlink" title="3.1【添加实例方法或属性】"></a><strong>3.1【添加实例方法或属性】</strong></h4><p>1、核心思想：</p>
+<pre><code>通过prototype来添加方法和属性。
+</code></pre><p>2、写：</p>
+<pre><code>//让输出的数字翻倍，如果不是数字或者不能隐式转换为数字，则输出null
+Vue.prototype.doubleNumber = function (val) {
+    if (typeof val === &apos;number&apos;) {
+        return val * 2;
+    } else if (!isNaN(Number(val))) {
+        return Number(val) * 2;
+    } else {
+        return null
+    }
+}
+</code></pre><p>3、用：</p>
+<p>假设有这样一个组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &#123;&#123;num&#125;&#125;</div><div class="line">        &lt;button @click=&quot;double&quot;&gt;点击后让左边的数字翻倍&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    export default&#123;</div><div class="line">        data()&#123;</div><div class="line">            return &#123;</div><div class="line">                num: 1</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        methods: &#123;</div><div class="line">            double: function () &#123;</div><div class="line">                //这里的this.doubleNumber()方法就是上面写的组件里的方法</div><div class="line">                this.num = this.doubleNumber(this.num);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>我们便可以通过点击button按钮，让num的值，在每次点击都翻倍了。</p>
+<p>4、假如添加的是属性：</p>
+<p>例如：</p>
+<pre><code>Vue.prototype.number = 1;
+</code></pre><p>会发生什么事情呢？</p>
+<pre><code>1、不管是【按值传递类型】还是【按引用传递类型】，该变量都不会被不同组件所共享，更准确的说，假如有A、B两个组件。A组件里的number数值改变，B组件里的number数值是不会跟着改变的。因此不要想着引用这样一个变量，然后修改了A中的值，B里也自动跟着改变了；
+2、当组件里没有该属性时，调用时，显示的是通过插件获取的值；
+   当组件里有该属性时，调用时，显示的是组件里该属性的值；
+   由此而推，函数也是这样的，组件里的同名函数总是会覆盖插件提供的函数。
+</code></pre><p>也就是说，当插件提供一个属性时，组件里没这个属性，就用插件的属性；组件有，就用组件自己的。</p>
+<h4 id="3-2【添加全局方法或属性】"><a href="#3-2【添加全局方法或属性】" class="headerlink" title="3.2【添加全局方法或属性】"></a><strong>3.2【添加全局方法或属性】</strong></h4><p>1、核心思想：</p>
+<p>就是给Vue对象添加一个属性。</p>
+<p>初次接触很容易和上面3.1弄混，实际上，3.1是给组件里使用的，而3.2是给Vue对象使用的。</p>
+<p>例如，假如添加一个方法test()，那么：</p>
+<pre><code>通过3.1添加，是在组件里，通过this.test()来调用
+
+通过3.2添加，是在外面，通过Vue实例，如Vue.test()来调用
+</code></pre><p>2、写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//放在哪里参考上面</div><div class="line">Vue.test = function () &#123;</div><div class="line">    alert(&quot;123&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3、用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//注意先导入Vue对象才能使用</div><div class="line">Vue.test()</div></pre></td></tr></table></figure>
+<p>使用时会执行对应的方法，比如这里就是alert弹窗</p>
+<p>4、其他：</p>
+<p>别问我如果和Vue本身属性同名会发生什么事情，我没试过=.=</p>
+<h4 id="3-3【注入组件】"><a href="#3-3【注入组件】" class="headerlink" title="3.3【注入组件】"></a><strong>3.3【注入组件】</strong></h4><p>1、核心思想：</p>
+<p>就像写Vue组件时，那样写，方法名保持一致，其会在执行组件对应的方法名之前执行。</p>
+<p>2、写：</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Vue.mixin(&#123;</div><div class="line">    created: function () &#123;</div><div class="line">        console.log(&quot;组件开始加载&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>然后这里的代码会在每个组件（包括根组件）的created执行之前执行。</p>
+<p>可以自行在每个组件的created方法里写一段console.log来查看测试</p>
+<p>可以和【实例属性】配合使用，用于调试或者控制某些功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 注入组件</div><div class="line">Vue.mixin(&#123;</div><div class="line">    created: function () &#123;</div><div class="line">        if (this.NOTICE)</div><div class="line">            console.log(&quot;组件开始加载&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">// 添加注入组件时，是否利用console.log来通知的判断条件</div><div class="line">Vue.prototype.NOTICE = false;</div></pre></td></tr></table></figure>
+<p>【注入给非Vue实例本身就有的方法】：</p>
+<p>假如是写给例如methods属性的某个方法，例如以下注入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Vue.mixin(&#123;</div><div class="line">    methods: &#123;</div><div class="line">        test: function () &#123;</div><div class="line">            console.log(&quot;mixin test&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>那么，组件里若本身有test方法，并 <strong>不会</strong> 先执行插件的test方法，再执行组件的test方法。</p>
+<p>而是只执行其中一个，并且优先执行组件本身的同名方法。这点需要注意</p>
+<p>3、用：</p>
+<p>不需要手动调用，在执行对应的方法时会被自动调用的（并且先调用插件里的，再调用组件本身的）</p>
+<p>4、其他：</p>
+<pre><code>1、如果同时有多个插件注入一个方法（例如created，那么会先执行先注入的那个方法，再依次执行后注入的，最后执行组件本身的）
+2、注意，像methods属性下的方法，并不会在组件注入后每个都执行，而是只执行一个，并且优先执行组件本身的。
+</code></pre><h4 id="3-4【添加全局资源】"><a href="#3-4【添加全局资源】" class="headerlink" title="3.4【添加全局资源】"></a><strong>3.4【添加全局资源】</strong></h4><p>1、核心思想：</p>
+<p>添加方法和正常添加方法类似，甚至几乎一样。</p>
+<p>可以添加【自定义指令】、【过滤器】、【过渡等】，这里以【过滤器】为例</p>
+<p>2、写：</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//时间格式化过滤器，输入内容是number或者Date对象，输出是YYYY-MM-DD HH-MM-SS</div><div class="line">Vue.filter(&apos;formatTime&apos;, function (value) &#123;</div><div class="line">    Date.prototype.Format = function (fmt) &#123; //author: meizz</div><div class="line">        var o = &#123;</div><div class="line">            &quot;M+&quot;: this.getMonth() + 1, //月份</div><div class="line">            &quot;d+&quot;: this.getDate(), //日</div><div class="line">            &quot;h+&quot;: this.getHours(), //小时</div><div class="line">            &quot;m+&quot;: this.getMinutes(), //分</div><div class="line">            &quot;s+&quot;: this.getSeconds(), //秒</div><div class="line">            &quot;q+&quot;: Math.floor((this.getMonth() + 3) / 3), //季度</div><div class="line">            &quot;S&quot;: this.getMilliseconds() //毫秒</div><div class="line">        &#125;;</div><div class="line">        if (/(y+)/.test(fmt))</div><div class="line">            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + &quot;&quot;).substr(4 - RegExp.$1.length));</div><div class="line">        for (var k in o)</div><div class="line">            if (new RegExp(&quot;(&quot; + k + &quot;)&quot;).test(fmt))</div><div class="line">                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : ((&quot;00&quot; + o[k]).substr((&quot;&quot; + o[k]).length)));</div><div class="line">        return fmt;</div><div class="line">    &#125;</div><div class="line">    return new Date(value).Format(&quot;yyyy-MM-dd hh:mm:ss&quot;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>3、用：</p>
+<p>和正常使用一样用就行了，so easy。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;num|formatTime&#125;&#125;</div></pre></td></tr></table></figure>
+<p>4、其他：</p>
+<p>可以用这个找各种有意思的功能，作为插件写好，然后需要的地方导入就行，超级方便！</p>
+<h3 style="color:red">4、示例demo</h3>
+
+<p>附一个有简单功能的示例demo，提供参考使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">/*  说明：</div><div class="line"> *  插件demo，供学习使用</div><div class="line"> *  本页面用于提供各种处理服务</div><div class="line"> *  作者：王冬   QQ：20004604</div><div class="line"> *  功能有：</div><div class="line"> *  1、插件created执行时提示；</div><div class="line"> *  2、</div><div class="line"> * */</div><div class="line">export default &#123;</div><div class="line">    install: function (Vue, options) &#123;</div><div class="line">        // 1. 添加全局方法或属性</div><div class="line">        // 略</div><div class="line"></div><div class="line">        // 2. 添加全局资源</div><div class="line">        //  时间格式化过滤器，输入内容是number或者Date对象，输出是YYYY-MM-DD HH-MM-SS</div><div class="line">        Vue.filter(&apos;formatTime&apos;, function (value) &#123;</div><div class="line">            Date.prototype.Format = function (fmt) &#123; //author: meizz</div><div class="line">                var o = &#123;</div><div class="line">                    &quot;M+&quot;: this.getMonth() + 1, //月份</div><div class="line">                    &quot;d+&quot;: this.getDate(), //日</div><div class="line">                    &quot;h+&quot;: this.getHours(), //小时</div><div class="line">                    &quot;m+&quot;: this.getMinutes(), //分</div><div class="line">                    &quot;s+&quot;: this.getSeconds(), //秒</div><div class="line">                    &quot;q+&quot;: Math.floor((this.getMonth() + 3) / 3), //季度</div><div class="line">                    &quot;S&quot;: this.getMilliseconds() //毫秒</div><div class="line">                &#125;;</div><div class="line">                if (/(y+)/.test(fmt))</div><div class="line">                    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + &quot;&quot;).substr(4 - RegExp.$1.length));</div><div class="line">                for (var k in o)</div><div class="line">                    if (new RegExp(&quot;(&quot; + k + &quot;)&quot;).test(fmt))</div><div class="line">                        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : ((&quot;00&quot; + o[k]).substr((&quot;&quot; + o[k]).length)));</div><div class="line">                return fmt;</div><div class="line">            &#125;</div><div class="line">            return new Date(value).Format(&quot;yyyy-MM-dd hh:mm:ss&quot;);</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">        // 2. 添加全局资源</div><div class="line">        //  添加注入组件时，是否利用console.log来通知的判断条件，也是组件实例属性</div><div class="line">        Vue.prototype.NOTICE = true;</div><div class="line"></div><div class="line"></div><div class="line">        // 3. 注入组件</div><div class="line">        //  注入组件，插件加载开始前提示</div><div class="line">        Vue.mixin(&#123;</div><div class="line">            created: function () &#123;</div><div class="line">                if (this.NOTICE)</div><div class="line">                    console.log(&quot;组件开始加载&quot;)</div><div class="line">            &#125;,</div><div class="line">            methods: &#123;</div><div class="line">                test: function () &#123;</div><div class="line">                    console.log(&quot;mixin test&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line"></div><div class="line"></div><div class="line">        // 4. 添加实例方法</div><div class="line">        //  返回数字是输入数字的两倍，如果不是数字或者不能隐式转换为数字，则输出null</div><div class="line">        //  组件实例方法</div><div class="line">        Vue.prototype.doubleNumber = function (val) &#123;</div><div class="line">            if (typeof val === &apos;number&apos;) &#123;</div><div class="line">                return val * 2;</div><div class="line">            &#125; else if (!isNaN(Number(val))) &#123;</div><div class="line">                return Number(val) * 2;</div><div class="line">            &#125; else &#123;</div><div class="line">                return null</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 4. 添加实例方法</div><div class="line">        //  服务组，将实例方法整合到$service中，避免命名冲突</div><div class="line">        Vue.prototype.$service = &#123;</div><div class="line">            //电话号码合法性检查</div><div class="line">            telNumberCheck: function (tel) &#123;</div><div class="line">                var pattern = /(^(([0\+]\d&#123;2,3&#125;-)?(0\d&#123;2,3&#125;)-)(\d&#123;7,8&#125;)(-(\d&#123;3,&#125;))?$)|(^0&#123;0,1&#125;1[3|4|5|6|7|8|9][0-9]&#123;9&#125;$)/;</div><div class="line">                return pattern.test(tel)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>来自上海前端群(426462717)【<code>上海-零零水</code>】投递，他的github：<a href="https://github.com/qq20004604" target="_blank" rel="external">https://github.com/qq20004604</a> ，我们的<a href="http://shanghaijs.org/" target="_blank" rel="external">上海前端交流官网</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/03/06/vue-pulgin-intro/" data-title="Vue插件介绍" data-url="http://yoursite.com/2017/03/06/vue-pulgin-intro/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jsfront" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jikey" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/03/01/webpack-backend-render-configuration/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">webpack传统后端渲染的项目前端配置</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/06/vue-pulgin-intro/" class="title">Vue插件介绍</a></p>
+                            <p class="item-date"><time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/01/webpack-backend-render-configuration/" class="title">webpack传统后端渲染的项目前端配置</a></p>
+                            <p class="item-date"><time datetime="2017-03-01T13:53:41.000Z" itemprop="datePublished">2017-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/01/几个让我印象深刻的面试题-一/" class="title">几个让我印象深刻的面试题(一)</a></p>
+                            <p class="item-date"><time datetime="2017-03-01T08:35:41.000Z" itemprop="datePublished">2017-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/公告/">公告</a></p>
+                            <p class="item-title"><a href="/2017/02/16/welcome-2017/" class="title">感谢2016一起走过，相约2017一起前行</a></p>
+                            <p class="item-date"><time datetime="2017-02-16T14:29:14.436Z" itemprop="datePublished">2017-02-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/公告/">公告</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/基础/" style="font-size: 20px;">基础</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://jikey.cnblogs.com">豪情</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <!--<a href="/" class="logo"></a>-->
+                    前端联盟群-492107297
+                </h1>
+                <p>&copy; 2017 豪情</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'jsfront'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
