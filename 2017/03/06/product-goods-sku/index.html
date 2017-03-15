@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>一个商品SKU是如何生成的 | 前端联盟群 - 492107297</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="首先说一说什么是SKU，建议自己百度。
+类似京东上面，未来人类S5这个台笔记本（没错，我刚入手了）
+
+都是S5这个型号，但是因为CPU,显卡，内存，硬盘等不同，价格也不一样。CPU,显卡，内存，硬盘等属性组合成的一个唯一的商品，就可以用一个SKU来表示,像图上就有10个SKU。一系列的SKU可以归到一个SPU下进行管理。
+那么一个SKU是怎么生成的呢？下面结合自己的一些经验，说说一些电商平台的大致">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个商品SKU是如何生成的">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/product-goods-sku/index.html">
+<meta property="og:site_name" content="前端联盟群 - 492107297">
+<meta property="og:description" content="首先说一说什么是SKU，建议自己百度。
+类似京东上面，未来人类S5这个台笔记本（没错，我刚入手了）
+
+都是S5这个型号，但是因为CPU,显卡，内存，硬盘等不同，价格也不一样。CPU,显卡，内存，硬盘等属性组合成的一个唯一的商品，就可以用一个SKU来表示,像图上就有10个SKU。一系列的SKU可以归到一个SPU下进行管理。
+那么一个SKU是怎么生成的呢？下面结合自己的一些经验，说说一些电商平台的大致">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2125695-7c81b33ee95b81b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-07T13:13:18.676Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个商品SKU是如何生成的">
+<meta name="twitter:description" content="首先说一说什么是SKU，建议自己百度。
+类似京东上面，未来人类S5这个台笔记本（没错，我刚入手了）
+
+都是S5这个型号，但是因为CPU,显卡，内存，硬盘等不同，价格也不一样。CPU,显卡，内存，硬盘等属性组合成的一个唯一的商品，就可以用一个SKU来表示,像图上就有10个SKU。一系列的SKU可以归到一个SPU下进行管理。
+那么一个SKU是怎么生成的呢？下面结合自己的一些经验，说说一些电商平台的大致">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2125695-7c81b33ee95b81b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6f9b24c0edfe66b3c0566368634f91fc";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <!--<a href="/" class="logo"></a>-->
+                        前端联盟群-492107297
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">首页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/公告/">公告</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/文章/">文章</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/city/index.html">城市榜</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">英雄榜</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/文章/">文章</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-product-goods-sku" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        一个商品SKU是如何生成的
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2017/03/06/product-goods-sku/" class="article-date">
+    <time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time>
+</a>
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>首先说一说什么是SKU，建议自己百度。</p>
+<p>类似京东上面，未来人类S5这个台笔记本（没错，我刚入手了）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-7c81b33ee95b81b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>都是S5这个型号，但是因为CPU,显卡，内存，硬盘等不同，价格也不一样。CPU,显卡，内存，硬盘等属性组合成的一个唯一的商品，就可以用一个SKU来表示,像图上就有10个SKU。一系列的SKU可以归到一个SPU下进行管理。</p>
+<p>那么一个SKU是怎么生成的呢？下面结合自己的一些经验，说说一些电商平台的大致产品结构以及SKU的生成方式。</p>
+<p>1.阿里速卖通平台,阿里国际站</p>
+<p>这两个平台同一个爸爸，基本差不多。要创建一个商品需要先选一个类目，类目下面挂了一堆的属性，属性上又挂了一堆的属性值。属性分为销售属性和非销售属性（销售属性就是类似颜色，尺寸这些单个SKU独有的，非销售属性就是多个SKU共有的，比如同一个品牌型号“未来人类S5”）。非销售属性有必填和非必填，可以是单选，多选，文本等。销售属性就是构成SKU的关键。比如说有销售属性颜色和尺寸，颜色属性下有很多属性值（红，黄，蓝等等），尺寸（1,2,3,4等等）也是。当颜色选了红，黄，尺寸选了1,2，那么就应该生成2x2=4个SKU，每个SKU有各自的价格，库存等。保存SKU的时候会与对应的销售属性相关联。<br>大致的数据模型如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-f229d9a02c3b47db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>当然，实际比这更加复杂（比如产品的图片，单个SKU的图片，多个SKU共同的图片,非销售属性可以自定义添加分类不具有的。。。）</p>
+<p>2.eBay<br>跟上面两个平台类似，创建一个产品也要先选一个分类，分类下面也是有很多属性，属性有很多属性值。。。，不同的地方是eBay没有区分销售属性和非销售属性（或者说全部是非销售属性），也允许添加自定义属性和属性值。eBay上SKU是手动添加的，SKU上的属性(SKU上的属性暂且都叫做销售属性)也是自定义的。比如说添加了一个SKU A,价格和数量这两个是必须的，还可以手动加个颜色属性，然后填上属性值红色。当然，若果增加一个SKU B，那么这个SKU也会有颜色这个属性，属性值可以自定义。最后校验这些SKU的属性值组合起来是否唯一。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-86e5783f51ccd238.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这样的优势就是可以随意控制SKU的数量，如果按照上面两个平台的规则，这里应该有4x4x1=16个SKU。这样自由度更高会不会使结构更加复杂呢？当然是NO，用上面的数据模型就可以搞定</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-432f5db22f1abb53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>3.Lazada,Linio平台<br>国际惯例，先选一个类目，类目下面一堆属性，有必填和非必填，属性下一堆属性值。最大的区别就是，一个产品只有一个SKU，属性不支持自定义。比如说要添加一个商品，有两种颜色，那么只能创建两个产品，这两个产品可能只有图片不一样（颜色不一样，可能没有颜色这个属性来选）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-02c4fb4b0e3cc8d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>4.Wish平台<br>比较奇特，没有分类，产品有固定的属性，比如标题，描述，运费等。一个产品下可以有多个SKU，SKU的生成取决于固定的两大类属性，两个大类为：颜色和尺寸。比如颜色这个属性就是归类于颜色这个类，其他的属性（品牌，型号，容量等等归为尺寸这个大类）。尺寸类的属性值支持自定义，但只能选一个尺寸类属性（比如选了品牌就不能选容量，选了品牌后可以添加任意值）。两类属性不是必须同时存在，比如颜色选了红，可以不选尺寸类的属性，反之也一样。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-023a5dc66e83b821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>忘记说了，一个SKU是靠一串唯一编码来标识的，比如1234A，1234B。一般来说一个平台下不会存在两个相同的SKU，或这一个店铺下不会存在两个相同的SKU。</p>
+<p>大致的逻辑和数据模型就这些，接下来说说开发实现方面。</p>
+<p>数据库大致就依靠上面的数据模型进行设计，编辑的时候，后端按照这些关联关系取出数据给到前端（我这边前后端未分离，页面还是后端渲染，但我还是把数据格式化为JSON再渲染到前端），保存的时候再进行相关的逻辑校验。因为后端的一些逻辑操作涉及后公司内部的业务，这里就不细说了。说说前端的具体细节，以速卖通的为例，用的是vue，前端拿到的数据如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-6650f4a87748bb03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="属性数据，(变量properties)"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-d1108580038850d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sku数据（变量skus）"></p>
+<p>实现后的粗糙界面</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2125695-2422c2ed8eea1a79.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data: &#123;</div><div class="line">    <span class="attr">properties</span>: properties,</div><div class="line">    <span class="attr">skus</span>: skus</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>遍历properties，得到材质，颜色，发货地，套餐这些属性对象，接着遍历这些对象里的values属性,得到属性值对象,根据属性对象的selectedValues判断属性值是否选上（因为我是后端渲染的js变量，所以初始化的时候selectedValues里的数据直接引用的属性值对象，如果是非后端渲染的话，要根据skus里的属性和属性值去初始化selectedValues的数据，并且存的是属性值对象的引用）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">v-for</span>=<span class="string">"(index,item) in properties"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;item.Name&#125;&#125;：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">v-for</span>=<span class="string">"value in item.values"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">:value</span>=<span class="string">"value"</span> <span class="attr">v-model</span>=<span class="string">"item.selectedValues"</span>/&gt;</span>&#123;&#123;value.Name&#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"list_table"</span> <span class="attr">v-if</span>=<span class="string">"item.Name!='发货地'&amp;&amp;item.selectedValues.length&gt;0"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>&#123;&#123;item.Name&#125;&#125;<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>自定义名称<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">th</span> <span class="attr">v-if</span>=<span class="string">"item.Name=='颜色'"</span>&gt;</span>图片（无图片可以不填）<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">v-for</span>=<span class="string">"selectedValue in item.selectedValues"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;selectedValue.Name&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"selectedValue.DefinitionName"</span> <span class="attr">maxlength</span>=<span class="string">"20"</span>/&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">v-if</span>=<span class="string">"item.Name=='颜色'"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"float: left"</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">style</span>=<span class="string">"width: 63px;"</span>/&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"float: right"</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">rel</span>=<span class="string">"link"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span></div><div class="line">                            <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"selectedValue.ImageUrl"</span> <span class="attr">width</span>=<span class="string">"30"</span> <span class="attr">height</span>=<span class="string">"35"</span>/&gt;</span></div><div class="line">                        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>因为selectedValues通过v-model绑定，当选中或取消一个属性值的时候后，selectedValues也会随着改变，selectedValues里的数据是直接引用属性值而不是拷贝一份数据，所以修改selectedValues中的数据也会直接反映到属性值上，实现了属性值的自定义。</p>
+<p>那么怎么根据选中的属性值生成SKU呢？<br>SKU表格处的表头是要根据选中的属性动态更新的，可以这样做<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">th</span> <span class="attr">v-for</span>=<span class="string">"item in properties"</span> <span class="attr">v-if</span>=<span class="string">"item.selectedValues.length&gt;0"</span>&gt;</span>&#123;&#123;item.Name&#125;&#125;<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"c_red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>零售价<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"c_red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>库存<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>商品编码<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果属性里的属性值都没有被选中（selectedValues.length==0），就不在表头显示这个属性。</p>
+<p>SKU的初始显示<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">v-for</span>=<span class="string">"sku in skus"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">td</span> <span class="attr">v-for</span>=<span class="string">"item in properties"</span> <span class="attr">v-if</span>=<span class="string">"item.selectedValues.length&gt;0"</span>&gt;</span>&#123;&#123;getValueName(sku,item)&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">td</span>&gt;</span>US $<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"sku.SkuPrice"</span> <span class="attr">class</span>=<span class="string">"w50"</span> <span class="attr">maxlength</span>=<span class="string">"9"</span>/&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">name</span>=<span class="string">"productUnitTips"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"sku.StockQuantity"</span> <span class="attr">class</span>=<span class="string">"w50"</span> <span class="attr">maxlength</span>=<span class="string">"9"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"sku.SkuCode"</span> <span class="attr">class</span>=<span class="string">"w180"</span> <span class="attr">maxlength</span>=<span class="string">"20"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>也是利用selectedValues.length让SKU的属性值列数与表头列数保持一致。因为SKU对象里的保存的是属性值Id和属性Id,需要一个方法去获取属性值的值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">getValueName: <span class="function"><span class="keyword">function</span> (<span class="params">sku, property</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> valueName = <span class="string">""</span>;</div><div class="line">    $.each(sku.values,</div><div class="line">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> _this = <span class="keyword">this</span>;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.propertyId == property.Id) &#123;</div><div class="line">                $.each(property.selectedValues, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span> (_this.valueId == <span class="keyword">this</span>.Id) &#123;</div><div class="line">                        valueName = <span class="keyword">this</span>.Name;</div><div class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    <span class="keyword">return</span> valueName;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你没有看错，这是JQ。。。</p>
+<p>接下来就是SKU表格的更新了，我的做法是变更整块区域，就是给skus重新赋值。赋的新值从哪来呢？</p>
+<p>将选中的属性值放到一个数组中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ori = [];</div><div class="line">$.each(vm.properties, <span class="function"><span class="keyword">function</span> (<span class="params">index, item</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> selectValues = <span class="keyword">this</span>.selectedValues;</div><div class="line">    <span class="keyword">if</span> (selectValues.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        ori.push(selectValues);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>得到这种结构的数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">10</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">477</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'铝'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">10</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">529</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'帆布'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">200000828</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">201655809</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'壳＋贴膜'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">200000828</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">201655810</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'壳＋挂绳'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>求笛卡尔积后（后面有求笛卡尔积参考链接）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ret = descartes(ori);</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">10</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">477</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'铝'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">200000828</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">201655809</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'壳＋贴膜'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">10</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">477</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'铝'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">200000828</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">201655810</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'壳＋挂绳'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">10</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">529</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'帆布'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">200000828</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">201655809</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'壳＋贴膜'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  ],</div><div class="line">  [</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">10</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">529</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'帆布'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="string">'PropertyId'</span>: <span class="number">200000828</span>,</div><div class="line">      <span class="string">'Id'</span>: <span class="number">201655810</span>,</div><div class="line">      <span class="string">'Name'</span>: <span class="string">'壳＋挂绳'</span>,</div><div class="line">      <span class="string">'DefinitionName'</span>: <span class="string">''</span>,</div><div class="line">      <span class="string">'ImageUrl'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>大前端也用上了算法有木有，这里需要弄明白拿到的是什么数据，需要的是什么数据，然后就去想实现就OK了。<br>想要的数据已经拿到，重新构建skus<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; ret.length; i++) &#123;</div><div class="line">    <span class="keyword">var</span> sku = &#123;<span class="attr">SkuCode</span>: <span class="string">""</span>, <span class="attr">SkuPrice</span>: <span class="string">""</span>, <span class="attr">StockQuantity</span>: <span class="string">""</span>&#125;;</div><div class="line">    sku.values = [];</div><div class="line">    $.each(ret[i],</div><div class="line">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            sku.values.push(&#123;<span class="attr">propertyId</span>: <span class="keyword">this</span>.PropertyId, <span class="attr">valueId</span>: <span class="keyword">this</span>.Id&#125;);</div><div class="line">      mSkus.push(sku);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>到此，更新SKU表格的代码已经实现，数据驱动视图更新，很清晰。但是什么时候去触发这个更新呢（何时去重新构建skus）? 很简单嘛，就是勾选或取消勾选属性值的时候去触发更新操作。勾选或取消勾选我们能直接从selectedValues.length上得到反馈，然后使用vue 的watch就可以实现了。但是selectedValues是properties数组中元素的一个属性，vue的watch是无法用在数组元素的某一个字段上的（至少目前我发现是这样的），那么暴力一点，直接watch整个properties数组并且加上deep:true。这样是可以实现，但是当修改自定义属性的时候也会触发变更（业务会提刀来见的）。</p>
+<p>最终解决方案<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">computed:&#123;</div><div class="line">  <span class="attr">allCheckedLength</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     <span class="keyword">var</span> length=<span class="number">0</span>;</div><div class="line">      $.each(<span class="keyword">this</span>.properties,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">          length+=<span class="keyword">this</span>.selectedValues.length;</div><div class="line">      &#125;);</div><div class="line">     <span class="keyword">return</span> length;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">watch: &#123;</div><div class="line">    <span class="string">'allCheckedLength'</span>: &#123;</div><div class="line">        <span class="attr">handler</span>: <span class="string">'reBuild'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>reBuild就是重新构建的方法。</p>
+<p><a href="http://codepen.io/JayceWu/pen/dOxLex" target="_blank" rel="external">在线demo，请猛击！</a></p>
+<p><a href="http://coconut-zhang.iteye.com/blog/1709547" target="_blank" rel="external">Java 笛卡尔积算法的简单实现</a><br><a href="http://stackoverflow.com/questions/12303989/cartesian-product-of-multiple-arrays-in-javascript/" target="_blank" rel="external">Cartesian product of multiple arrays in JavaScript</a></p>
+<p>来自深圳前端群(247687975)【<code>深圳-若邪</code>】投递，他的个人博客是：<a href="http://jaycewu.site/" target="_blank" rel="external">若邪</a> ，我们的<a href="http://shenzhenjs.com/" target="_blank" rel="external">深圳前端交流官网</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2017/03/06/product-goods-sku/" data-title="一个商品SKU是如何生成的" data-url="http://yoursite.com/2017/03/06/product-goods-sku/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jsfront" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jikey" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/03/06/vue-pulgin-intro/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Vue插件介绍</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/06/product-goods-sku/" class="title">一个商品SKU是如何生成的</a></p>
+                            <p class="item-date"><time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/06/vue-pulgin-intro/" class="title">Vue插件介绍</a></p>
+                            <p class="item-date"><time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/01/webpack-backend-render-configuration/" class="title">webpack传统后端渲染的项目前端配置</a></p>
+                            <p class="item-date"><time datetime="2017-03-01T13:53:41.000Z" itemprop="datePublished">2017-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
+                            <p class="item-title"><a href="/2017/03/01/几个让我印象深刻的面试题-一/" class="title">几个让我印象深刻的面试题(一)</a></p>
+                            <p class="item-date"><time datetime="2017-03-01T08:35:41.000Z" itemprop="datePublished">2017-03-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/公告/">公告</a></p>
+                            <p class="item-title"><a href="/2017/02/06/welcome-2017/" class="title">感谢2016一起走过，相约2017一起前行</a></p>
+                            <p class="item-date"><time datetime="2017-02-06T01:53:41.000Z" itemprop="datePublished">2017-02-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/公告/">公告</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文章/">文章</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/基础/" style="font-size: 20px;">基础</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://jikey.cnblogs.com">豪情</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <!--<a href="/" class="logo"></a>-->
+                    前端联盟群-492107297
+                </h1>
+                <p>&copy; 2017 豪情</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'jsfront'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
