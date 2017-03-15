@@ -111,11 +111,11 @@
   },
   {
     "id": "12",
-    "username": "shangdongjs",
+    "username": "shandongjs",
     "name": "山东",
-    "blog": "http://shangdongjs.org",
-    "github": "https://github.com/shangdongjs",
-    "website": "http://shangdongjs.org",
+    "blog": "http://shandongjs.org",
+    "github": "https://github.com/shandongjs",
+    "website": "http://shandongjs.org",
     "word": "山东是一座给力的城市",
     "avatar": "https://avatars2.githubusercontent.com/u/25519846?v=3&s=200"
   },
@@ -283,10 +283,20 @@
     "id": "29",
     "username": "guangxijs",
     "name": "广西",
-    "blog": "http://guangxijs.org",
+    "blog": "http://guangxijs.com",
     "github": "https://github.com/guangxijs",
     "website": "http://guangxijs.com",
     "word": "桂林是一座给力的城市",
     "avatar": "https://avatars3.githubusercontent.com/u/25521082?v=3&s=200"
+  },
+  {
+    "id": "30",
+    "username": "hainan",
+    "name": "海南",
+    "blog": "http://hainanjs.org",
+    "github": "https://github.com/hainanjs",
+    "website": "http://hainanjs.org",
+    "word": "海口是一座给力的城市",
+    "avatar": "https://avatars1.githubusercontent.com/u/25519718?v=3&s=200"
   }
 ]
