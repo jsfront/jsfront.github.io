@@ -8,89 +8,26 @@
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="vue-cli 填坑记录(上)目录：
+    <meta name="description" content="大家好，我是float，一个前端自学者。今天和大家分享主要内容是：vue-cli中常用插件的填坑，在分享的过程中，我会提出一个个问题，围绕这些问题来做分析。在分享之前和大家先聊两个有趣的问题：
 
-Hello VueJs
-准备工作
-热身组件
-常用插件
-
-Hello Vue在填坑之前先铺垫一点基础知识
-
-VueJs 是一个渐进式JavaScript 框架
-Vue 与 jQueryJs
-vue
-操作DOM元素对象
-以数据为驱动，简化DOM操作，提高DOM复用率
-利于后期维护
-
-
-jQuery
-语义化明显
-易于理解
-可扩展插件众多
-
-
-选择
-DOM操作频繁，">
+为什么我和网上那些博客中的代码一摸一样，还是频频报错？
+在学习过程中网上的博客，专栏之类可以提供诸多便利，但在看之前一定要抱着一个审视的态度，因为每个人的侧重点，代码风格都有所不同，甚至博客中写的可能是一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【群内分享】- vue-cli 填坑记录(上)-北京-float">
 <meta property="og:url" content="http://yoursite.com/2017/04/15/share/2017-4-15-13-vue-cli-experience/index.html">
 <meta property="og:site_name" content="前端联盟群 - 492107297">
-<meta property="og:description" content="vue-cli 填坑记录(上)目录：
+<meta property="og:description" content="大家好，我是float，一个前端自学者。今天和大家分享主要内容是：vue-cli中常用插件的填坑，在分享的过程中，我会提出一个个问题，围绕这些问题来做分析。在分享之前和大家先聊两个有趣的问题：
 
-Hello VueJs
-准备工作
-热身组件
-常用插件
-
-Hello Vue在填坑之前先铺垫一点基础知识
-
-VueJs 是一个渐进式JavaScript 框架
-Vue 与 jQueryJs
-vue
-操作DOM元素对象
-以数据为驱动，简化DOM操作，提高DOM复用率
-利于后期维护
-
-
-jQuery
-语义化明显
-易于理解
-可扩展插件众多
-
-
-选择
-DOM操作频繁，">
+为什么我和网上那些博客中的代码一摸一样，还是频频报错？
+在学习过程中网上的博客，专栏之类可以提供诸多便利，但在看之前一定要抱着一个审视的态度，因为每个人的侧重点，代码风格都有所不同，甚至博客中写的可能是一">
 <meta property="og:image" content="https://github.com/Yinlongcoding/about_webpack.github.io/blob/master/images/router.gif?raw=true">
-<meta property="og:updated_time" content="2017-05-02T04:09:06.645Z">
+<meta property="og:updated_time" content="2017-05-02T04:10:15.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【群内分享】- vue-cli 填坑记录(上)-北京-float">
-<meta name="twitter:description" content="vue-cli 填坑记录(上)目录：
+<meta name="twitter:description" content="大家好，我是float，一个前端自学者。今天和大家分享主要内容是：vue-cli中常用插件的填坑，在分享的过程中，我会提出一个个问题，围绕这些问题来做分析。在分享之前和大家先聊两个有趣的问题：
 
-Hello VueJs
-准备工作
-热身组件
-常用插件
-
-Hello Vue在填坑之前先铺垫一点基础知识
-
-VueJs 是一个渐进式JavaScript 框架
-Vue 与 jQueryJs
-vue
-操作DOM元素对象
-以数据为驱动，简化DOM操作，提高DOM复用率
-利于后期维护
-
-
-jQuery
-语义化明显
-易于理解
-可扩展插件众多
-
-
-选择
-DOM操作频繁，">
+为什么我和网上那些博客中的代码一摸一样，还是频频报错？
+在学习过程中网上的博客，专栏之类可以提供诸多便利，但在看之前一定要抱着一个审视的态度，因为每个人的侧重点，代码风格都有所不同，甚至博客中写的可能是一">
 <meta name="twitter:image" content="https://github.com/Yinlongcoding/about_webpack.github.io/blob/master/images/router.gif?raw=true">
     
 
@@ -237,7 +174,49 @@ var _hmt = _hmt || [];
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="vue-cli-填坑记录-上"><a href="#vue-cli-填坑记录-上" class="headerlink" title="vue-cli 填坑记录(上)"></a>vue-cli 填坑记录(上)</h2><p>目录：</p>
+            <p>大家好，我是float，一个前端自学者。<br>今天和大家分享主要内容是：vue-cli中常用插件的填坑，在分享的过程中，我会提出一个个问题，围绕这些问题来做分析。<br>在分享之前和大家先聊两个有趣的问题：</p>
+<ul>
+<li>为什么我和网上那些博客中的代码一摸一样，还是频频报错？<ul>
+<li>在学习过程中网上的博客，专栏之类可以提供诸多便利，但在看之前一定要抱着一个审视的态度，因为每个人的侧重点，代码风格都有所不同，甚至博客中写的可能是一个“伪代码”。这里我建议从官方github clone案例来学习，官方的文档会随着版本迭代而同步更新，相对于博客之类也更加全面，避免旧版本带来的一些坑。</li>
+</ul>
+</li>
+<li>看到vue-cli那么多文件，该如何下手？<ul>
+<li>从main.js 和 App.vue中的export default xx 到 import xx from “xxx”，一点一点来看，这个过程是在熟悉vue的require机制，这对了解这个项目结构起着至关重要的作用。</li>
+</ul>
+</li>
+</ul>
+<p>切入正题：<br>聊一聊，vue-router：</p>
+<ul>
+<li>“前后端分离”的概念：<ul>
+<li>我粗浅理解为：共用一个url，多页面改变的是hash值；后端负责数据层，前端负责view层；在Node／HTTP或其他层面分离；前后端分离具体体现-路由建立的单页面应用</li>
+</ul>
+</li>
+<li>vue-router 2.x的变化<ul>
+<li>router变更为一个数组对象</li>
+</ul>
+</li>
+<li>如何理解vue-router ？<ul>
+<li>关系网：谁是父组件，谁是子组件，父组件通过路由映射出子组件</li>
+<li>嵌套路由：在理解关系网的前提下，在子组件中再次创建路由映射，实现嵌套路由，需要注意的就是路径的书写</li>
+<li>重定向：重定向的组件效果是什么样？ 如果重定向了A组件，观察url发现加载后的hash是“#/A”</li>
+</ul>
+</li>
+</ul>
+<p>聊一聊，axios：</p>
+<ul>
+<li>axios，vue 2.0后停止维护vue-resource，推荐使用axios来做ajax请求，axios基于Promise的HTTP请求客户端。</li>
+<li>axios在vue中如何使用？vue的插件可以用vue.use来调用，但是axios并不是基于vue开发的插件，所以只能在vue实例的原型上添加方法，当然也可以在vuex的actions内封装一下。</li>
+</ul>
+<p>聊一聊， vuex</p>
+<ul>
+<li>vuex 是一个专为vue.js应用程序开发的状态管理模式，为所有组件提供数据和方法支持</li>
+<li>一个有趣的例子：“在北京的一个城中村中，村长在用广播宣布一件事：“乡亲们，咱们村要拆迁了！”，村民们兴奋异常，奔走相告，炫耀着自己能分到几套房子。有些村民不相信，向村长再次求证拆迁信息，一户村民家里外出打工的儿子回来后，向父亲询问消息，知道了拆迁的事情。”</li>
+<li>“城中村”是一个父组件（App.vue）；各户村民是子组件；“拆迁信息” 则是vuex.store对象中的state(数据)；“求证” 则是mutations，同步函数；“兴奋异常，奔走相告” 则是actions，可为异步函数；”儿子向父亲询问消息“ 则是在actions中发送一个ajax，”从父亲那知道了拆迁消息“ 则是getters。</li>
+<li>在开发中，vuex可以为所有组件提供一个特殊的“数据库”，这个数据库里不单单有数据，还有数据交互的方法（同步和异步分开），和获取数据状态的方法。这些数据／方法在vue实例下挂载的组件都可访问，可使用。</li>
+</ul>
+<p>上述的这些问题，只是为了更好的理解这些插件做了一个简单的概括，更加详细的分析、demo和源码解析在我在github中有详细的记录：<a href="https://github.com/Yinlongcoding/about_webpack.github.io" target="_blank" rel="external">a summary of vue-cli</a></p>
+<p>下面是我的一些填坑记录，顺便一块分享了。</p>
+<h2 id="vue-cli-填坑记录-上"><a href="#vue-cli-填坑记录-上" class="headerlink" title="vue-cli 填坑记录(上)"></a>vue-cli 填坑记录(上)</h2><p>目录：</p>
 <ol>
 <li>Hello VueJs</li>
 <li>准备工作</li>
@@ -708,7 +687,7 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
-                            <p class="item-title"><a href="/2017/03/06/vue-pulgin-intro/" class="title">Vue插件介绍</a></p>
+                            <p class="item-title"><a href="/2017/03/06/product-goods-sku/" class="title">一个商品SKU是如何生成的</a></p>
                             <p class="item-date"><time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time></p>
                         </div>
                     </li>
@@ -717,7 +696,7 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/文章/">文章</a></p>
-                            <p class="item-title"><a href="/2017/03/06/product-goods-sku/" class="title">一个商品SKU是如何生成的</a></p>
+                            <p class="item-title"><a href="/2017/03/06/vue-pulgin-intro/" class="title">Vue插件介绍</a></p>
                             <p class="item-date"><time datetime="2017-03-06T01:53:41.000Z" itemprop="datePublished">2017-03-06</time></p>
                         </div>
                     </li>
